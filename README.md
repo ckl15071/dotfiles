@@ -3,6 +3,11 @@
 ## インストール
 
 ```bash
+# ローカルから実行
+cd ~/dotfiles
+bash install.sh
+
+# リモートから実行（初回セットアップ時など）
 curl -L raw.githubusercontent.com/ckl15071/dotfiles/master/install.sh | bash
 ```
 
@@ -11,11 +16,13 @@ curl -L raw.githubusercontent.com/ckl15071/dotfiles/master/install.sh | bash
 VSCode のユーザー設定を適用する。
 
 ```bash
+# ローカルから実行
 cd ~/dotfiles
 bash install_vscode.sh
-```
 
-- 対象: `settings.json`、`keybindings.json`
+# リモートから実行（初回セットアップ時など）
+curl -L raw.githubusercontent.com/ckl15071/dotfiles/master/install_vscode.sh | bash
+```
 
 ## バックアップ
 
