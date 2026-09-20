@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# スクリプト自身の場所(curl | bash の場合は特定できないので空)
+# スクリプト自身の場所（curl | bash の場合は特定できないので空）
 SCRIPT_DIR=""
 if [ -n "${BASH_SOURCE[0]}" ] && [ -f "${BASH_SOURCE[0]}" ]; then
     SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -19,13 +19,13 @@ fi
 
 cd "$DOTPATH"
 
-BACKUP_DIR=~/dotfiles_backup_$(date +%Y%m%d%H%M%S)
+BACKUP_DIR=~/dotfiles_backup/$(date +%Y%m%d_%H%M%S)
 
 for f in .??*
 do
     [ "$f" = ".git" ] && continue
 
-    # 既存の実体ファイル/ディレクトリ(シンボリックリンク以外)をバックアップ
+    # 既存の実体ファイル/ディレクトリ（シンボリックリンク以外）をバックアップ
     if [ -e "$HOME/$f" ] && [ ! -L "$HOME/$f" ]; then
         mkdir -p "$BACKUP_DIR"
         mv -v "$HOME/$f" "$BACKUP_DIR/$f"
