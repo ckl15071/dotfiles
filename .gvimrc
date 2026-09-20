@@ -4,7 +4,32 @@
 " 背景色
 "set background=dark
 " カラースキーム
-colorscheme molokai
+let s:home_vim = expand('~/.vim')
+let s:colors_dir = s:home_vim . '/colors'
+if !isdirectory(s:colors_dir)
+    call mkdir(s:colors_dir, 'p')
+endif
+
+if index(split(&runtimepath, ','), s:home_vim) == -1
+    let &runtimepath .= ',' . s:home_vim
+endif
+
+let s:molokai_file = s:colors_dir . '/molokai.vim'
+if !filereadable(s:molokai_file)
+    if executable('curl')
+        call system('curl -fsSL https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim -o ' . shellescape(s:molokai_file))
+    endif
+endif
+
+if filereadable(s:molokai_file)
+    try
+        colorscheme molokai
+    catch /^Vim\%((\a\+)\)\=:E185/
+        colorscheme default
+    endtry
+else
+    colorscheme default
+endif
 " highlight Normal ctermbg=none
 " highlight NonText ctermbg=none
 " highlight LineNr ctermbg=none
@@ -44,7 +69,12 @@ if &runtimepath !~# '/dein.vim'
     if !(s:dir->isdirectory())
         let s:dir = $CACHE .. '/dein/repos/github.com/Shougo/dein.vim'
         if !(s:dir->isdirectory())
-            execute '!git clone https://github.com/Shougo/dein.vim' s:dir
+            if executable('curl')
+                call system('curl -fsSL https://raw.githubusercontent.com/Shougo/dein.vim/master/README.md -o ' . shellescape($CACHE .. '/dein.tmp'))
+            endif
+            if executable('git')
+                execute '!git clone https://github.com/Shougo/dein.vim' s:dir
+            endif
         endif
     endif
     execute 'set runtimepath^='
@@ -56,11 +86,13 @@ let s:dein_src = '~/.cache/dein/repos/github.com/Shougo/dein.vim'
 
 execute 'set runtimepath+=' .. s:dein_src
 
-call dein#begin(s:dein_base)
-call dein#add(s:dein_src)
-call dein#add('tomasr/molokai')
-call dein#add('preservim/nerdtree')
-call dein#end()
+if filereadable(s:dein_src . '/autoload/dein.vim')
+    call dein#begin(s:dein_base)
+    call dein#add(s:dein_src)
+    call dein#add('tomasr/molokai')
+    call dein#add('preservim/nerdtree')
+    call dein#end()
+endif
 
 filetype indent plugin on
 
@@ -72,4 +104,3 @@ filetype indent plugin on
 if has('syntax')
     syntax on
 endif
-

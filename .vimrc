@@ -1,8 +1,9 @@
 scriptencoding utf-8
 
-"--------------------------------------------------
-" ファイル設定
-"--------------------------------------------------
+"==================================================
+" 基本設定
+"==================================================
+" エンコード設定
 set encoding=utf-8
 " 保存時の文字コード
 set fileencoding=utf-8
@@ -22,13 +23,41 @@ set autoread
 " バッファが編集中でもその他のファイルを開けるように
 set hidden
 
-"--------------------------------------------------
-" 操作補助
-"--------------------------------------------------
+"==================================================
+" プラグインマネージャ起動
+"==================================================
+
+"==================================================
+" プラグインごとのグローバル変数
+"==================================================
+" 閉じタグ自動補完対象ファイル
+let g:closetag_filenames = '*.html, *php'
+" Emmet用キー
+let g:user_emmet_leader_key='<c-s>'
+
+" netrw
+" netrw上部のバナーを表示しない
+let g:netrw_banner = 0
+" netrwのウィンドウサイズ（-30：列幅30文字固定）
+let g:netrw_winsize = -30
+let g:netrw_liststyle = 3
+" Lexplore は常に左側に開く
+let g:netrw_altv = 0
+" 起動時に左側に開く
+"autocmd VimEnter * Lexplore
+" プレビューウィンドウ
+let g:netrw_preview = 1 " 1：垂直分割
+
+"==================================================
+" 検索・編集・移動の基本挙動
+"==================================================
 " コマンドラインの保管
+"
 set wildmode=list:longest
 " コマンドモードの補完
 set wildmenu
+" :findで現在のフォルダ以下を再帰検索する
+set path+=**
 " 入力中のコマンドをステータスに表示する
 set showcmd
 
@@ -50,34 +79,6 @@ set smartindent
 "set virtualedit=onemore
 " 矩形選択のブロック化（文字のないところにカーソル移動できるようにする）
 "set virtualedit=block
-nnoremap ; :
-nnoremap : ;
-
-" 閉じタグ自動補完対象ファイル
-let g:closetag_filenames = '*.html, *php'
-" Emmet用キー
-let g:user_emmet_leader_key='<c-s>'
-
-" netrw
-" netrwのウィンドウサイズ（-30：列幅30文字固定）
-let g:netrw_winsize = -30
-let g:netrw_liststyle = 3
-" 垂直分割で右に開く
-let g:netrw_altv = 1
-" 起動時に左側に開く
-autocmd VimEnter * Lexplore
-" プレビューウィンドウ
-let g:netrw_preview = 1 " 1：垂直分割
-"" ファイルツリーの表示形式、1にするとls -laのような表示になります
-"let g:netrw_liststyle = 1
-"" ヘッダを非表示にする
-"let g:netrw_banner = 0
-"" サイズを(K,M,G)で表示する
-"let g:netrw_sizestyle = "H"
-"" 日付フォーマットを yyyy/mm/dd(曜日) hh:mm:ss で表示する
-"let g:netrw_timefmt = "%Y/%m/%d(%a) %H:%M:%S"
-"" プレビューウィンドウを垂直分割で表示する
-"let g:netrw_preview = 1
 
 " 検索するときに大文字小文字を区別しない
 set ignorecase
@@ -92,12 +93,10 @@ set hlsearch
 " 行をまたいで移動
 "set whichwrap=b,s,h,l,<,>,[,],~
 set backspace=indent,eol,start
-" ESCキー2回押しでハイライトの切り替え
-nnoremap <Esc><Esc> :noh<CR>
 
-"--------------------------------------------------
-" 見た目
-"--------------------------------------------------
+"==================================================
+" 外観
+"==================================================
 " 行番号を表示
 set number
 " 現在の行を強調表示
@@ -105,26 +104,21 @@ set cursorline
 " 現在の列を強調表示
 set nocursorcolumn
 " 空白文字の可視化
-set list listchars=tab:\-\>,eol:↲,trail:␣,space:･
+set list
+set listchars=tab:\-\>,eol:$,trail:*,space:.
 
 " 色変更
 highlight NonText ctermfg=21 guifg=#0000ff
-" ビープ音を可視化
-"set visualbell
+" ビープ音・警告表示を可視化しない
+set noerrorbells
+set visualbell t_vb=
+set belloff=all
 " 長い行の表示
 set display=lastline
 " タブ幅
 set tabstop=4
 " インデント幅
 set shiftwidth=4
-"個別のタブインデント幅設定
-autocmd BufRead,BufNewFile *.php setlocal tabstop=2 shiftwidth=2
-" 全角スペースの可視化
-augroup highlightIdegraphicSpace
-    autocmd!
-    autocmd Colorscheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
-    autocmd VimEnter,WinEnter * match IdeographicSpace /　/
-augroup END
 
 " ターミナルのタイトルをセットする
 set title
@@ -157,7 +151,98 @@ endif
 " 現在行数/全行数
 set statusline+=[%l/%L]
 
+" 色変更と可視化に関する補助表示
+" 全角スペースの可視化
+" colorscheme が未読み込みでも group を定義しておき、E411 を防ぐ
+highlight default IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
+" matchadd は GUI/CLI の起動順序差があるため避ける
+"augroup highlightIdegraphicSpace
+"    autocmd!
+"    autocmd VimEnter,WinEnter * call matchadd('IdeographicSpace', '　')
+"augroup END
+
+"==================================================
+" カラースキーム準備
+"==================================================
+let s:home_vim = expand('~/.vim')
+let s:colors_dir = s:home_vim . '/colors'
+if !isdirectory(s:colors_dir)
+    call mkdir(s:colors_dir, 'p')
+endif
+
+" Vim の探索経路にホーム側の colors 置き場を追加
+if index(split(&runtimepath, ','), s:home_vim) == -1
+    let &runtimepath .= ',' . s:home_vim
+endif
+
+let s:molokai_file = s:colors_dir . '/molokai.vim'
+if !filereadable(s:molokai_file)
+    if executable('curl')
+        call system('curl -fsSL https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim -o ' . shellescape(s:molokai_file))
+    endif
+endif
+
+if filereadable(s:molokai_file)
+    try
+        colorscheme molokai
+    catch /^Vim\%((\a\+)\)\=:E185/
+        colorscheme default
+    endtry
+else
+    colorscheme default
+endif
+
+"==================================================
+" キーマップ
+"==================================================
+nnoremap ; :
+nnoremap : ;
+nnoremap <Esc><Esc> :noh<CR>
+
+"==================================================
+" 関数・Autocmd
+"==================================================
+" netrwの表示状態に応じて、エクスプローラを開く／閉じる
+function! ToggleLexplore()
+    " Netrwバッファが存在する場合はエクスプローラを閉じる
+    if bufexists('Netrw')
+        execute 'Lexplore!'
+    " Netrwバッファがない場合はエクスプローラを開く
+    else
+        execute 'Lexplore'
+    endif
+
+    " 分割されているウィンドウを等幅にする
+    wincmd =
+endfunction
+
+" ファイルを閉じてnetrwだけが残った場合に、netrwも閉じる
+function! s:CloseNetrwIfAlone() abort
+    " ウィンドウが1つだけで、その内容がnetrwなら閉じる
+    if winnr('$') == 1 && &filetype ==# 'netrw'
+        quit
+    endif
+endfunction
+
+augroup netrw_auto_close
+    autocmd!
+    " ファイルを閉じてnetrwに戻ったタイミングで、netrwも閉じる
+    autocmd WinEnter * call <SID>CloseNetrwIfAlone()
+augroup END
+
+augroup gvim_dnd_dir_cd
+  autocmd!
+  " バッファに入ったとき、それがディレクトリ（フォルダ）ならそこへcdする
+  autocmd BufEnter * if isdirectory(expand('%:p')) | execute 'cd' fnameescape(expand('%:p')) | endif
+augroup END
+
+nnoremap <silent> <C-b> :call ToggleLexplore()<CR>
+
+" 個別のタブインデント幅設定
+autocmd BufRead,BufNewFile *.php setlocal tabstop=2 shiftwidth=2
+
+"==================================================
 " 構文ハイライト
+"==================================================
 syntax on
 set t_Co=256
-

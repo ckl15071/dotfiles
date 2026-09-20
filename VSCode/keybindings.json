@@ -1,0 +1,96 @@
+// 既定値を上書きするには、このファイル内にキー バインドを挿入します
+[
+    //! ターミナルフォーカス
+    {   "key": "ctrl+0",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    //! タブ移動(右)
+    {   "key": "ctrl+tab",
+        "command": "workbench.action.nextEditor"
+    },
+    //! タブ移動(左)
+    {   "key": "ctrl+shift+tab",
+        "command": "workbench.action.previousEditor"
+    },
+    //! f7ビルド
+    {   "key": "f7",
+        "command": "workbench.action.tasks.build"
+    },
+    //! 検索ウィジェットにフォーカス無効
+    //{
+    //    "key": "ctrl+f",
+    //    "command": "workbench.action.terminal.focusFindWidget"
+    //},
+    //! 検索ウィジェットにフォーカス無効(統合ターミナルフォーカス時)
+    {
+        "key": "ctrl+f",
+        "command": "workbench.action.terminal.focusFindWidget",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "editor.action.inlineSuggest.commit",
+        "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    },
+    {
+        "key": "tab",
+        "command": "-editor.action.inlineSuggest.commit",
+        "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "editor.action.inlineSuggest.commit",
+        "when": "inInlineEditsPreviewEditor"
+    },
+    {
+        "key": "tab",
+        "command": "-editor.action.inlineSuggest.commit",
+        "when": "inInlineEditsPreviewEditor"
+    },
+    //! diffエディタで左側に切り替え
+    {
+        "key": "ctrl+w h",
+        "command": "diffEditor.switchSide",
+        "when": "editorTextFocus && isInDiffEditor"
+    },
+    //! diffエディタで右側に切り替え
+    {
+        "key": "ctrl+w l",
+        "command": "diffEditor.switchSide",
+        "when": "editorTextFocus && isInDiffEditor"
+    },
+    //! VSCodeのファイルオープンと競合するため無効化
+    {
+        "key": "ctrl+p",
+        "command": "-extension.vim_ctrl+p",
+        "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
+    },
+    //! inlineSuggestに使用するため無効化
+    {
+        "key": "ctrl+j",
+        "command": "-extension.vim_ctrl+j",
+        "when": "editorTextFocus && vim.active && vim.use<C-j> && !inDebugRepl"
+    },
+    //! inlineSuggestに使用するため無効化
+    {
+        "key": "ctrl+j",
+        "command": "-workbench.action.togglePanel"
+    },
+    //! 定義に移動（Vimキーバインド）
+    //{
+    //    "key": "g d",
+    //    "command": "editor.action.revealDefinition",
+    //    "when": "editorHasDefinitionProvider && editorTextFocus"
+    //},
+    //! 宣言に移動（Vimキーバインド）
+    {   //ダミー用（g+r単体だけだと通常のVimキーバインドが無効になる）
+        "key": "F11",
+        "command": "references-view.findReferences",
+        "when": "editorHasDefinitionProvider && editorTextFocus"
+    },
+    //{
+    //    "key": "g r",
+    //    "command": "references-view.findReferences",
+    //    "when": "editorHasDefinitionProvider && editorTextFocus"
+    //}
+]

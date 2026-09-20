@@ -1,5 +1,4 @@
-[user]
-	email = shibadaigogo@gmail.com
-	name = Daichi Shibata
+[include]
+    path = ~/.gitconfig.local
 [alias]
 	lograph = log --graph --date=format:\"%Y/%m/%d %H:%M:%S\" --format=\"%C(yellow)%h%C(reset) %C(magenta)[%ad]%C(reset)%C(auto)%d%C(reset) %s %C(cyan)@%an%C(reset)\"

@@ -1,0 +1,336 @@
+{
+    //!=========================================================================
+    //! テキスト エディター
+    //!=========================================================================
+    //!--------------------------------------------------
+    //! カーソル
+    //!--------------------------------------------------
+    "editor.cursorStyle": "block",
+    //!--------------------------------------------------
+    //! フォント
+    //!--------------------------------------------------
+    "editor.fontFamily": "Ricty Diminished",
+    "editor.fontLigatures": "null",
+    "editor.fontSize": 12,
+    "editor.fontVariations": false,
+    //!--------------------------------------------------
+    //! 書式設定
+    //!--------------------------------------------------
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+    "editor.formatOnSave": false,
+    //!--------------------------------------------------
+    //! ミニマップ
+    //!--------------------------------------------------
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.showSlider": "always",
+    //!--------------------------------------------------
+    //! 候補
+    //!--------------------------------------------------
+    //! ユーザスニペットを優先表示
+    "editor.snippetSuggestions": "top",
+    "editor.suggestSelection": "first",
+    //!--------------------------------------------------
+    //! ファイル
+    //!--------------------------------------------------
+    //"files.encoding": "utf8",
+    "files.autoGuessEncoding": true,
+    //!文字コード自動判定の候補リスト
+    "files.candidateGuessEncodings": [
+        "utf8",
+        "shiftjis",
+        "eucjp"
+    ],
+    "files.eol": "\n",
+    "files.associations": {
+        "*.h": "c"
+    },
+    //!--------------------------------------------------
+    //! その他
+    //!--------------------------------------------------
+    "editor.inlayHints.enabled": "off",
+    "[c]": {
+        "editor.tabSize": 4,
+        "files.encoding": "utf8",
+        "files.eol": "\n"
+    },
+    "[html]": {
+        "editor.tabSize": 2
+    },
+    "[javascript]": {
+        "editor.tabSize": 2
+    },
+    "[php]": {
+        "editor.tabSize": 2
+    },
+    "[ruby]": {
+        "editor.tabSize": 2
+    },
+    "editor.wordWrap": "on",
+    "editor.renderControlCharacters": true,
+    "editor.renderWhitespace": "all",
+    "editor.rulers": [80], // 目安となる縦線（ルーラー）を80列目に引く
+    "editor.editorOverviewRuler.background": "#00000000",
+    "editor.customColorDecorations": true,
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    //!=========================================================================
+    //! ワークベンチ
+    //!=========================================================================
+    //!--------------------------------------------------
+    //! 外観
+    //!--------------------------------------------------
+    //! インデントガイドの色設定
+    "workbench.colorCustomizations": {
+        "editorIndentGuide.background1": "#b22222",
+        "editorIndentGuide.background2": "#ff6900",
+        "editorIndentGuide.background3": "#ffd700",
+        "editorIndentGuide.background4": "#32cd32",
+        "editorIndentGuide.background5": "#00bfff",
+        "editorIndentGuide.background6": "#9370db",
+        "editorIndentGuide.activeBackground1": "#fff",
+        "editorIndentGuide.activeBackground2": "#fff",
+        "editorIndentGuide.activeBackground3": "#fff",
+        "editorIndentGuide.activeBackground4": "#fff",
+        "editorIndentGuide.activeBackground5": "#fff",
+        "editorIndentGuide.activeBackground6": "#fff",
+        "editorRuler.foreground": "#ff000055",   // 縦線の色
+        //! 括弧(if/forなどのインデントに付随する括弧)の色をインデントガイドに合わせる
+        "editorBracketHighlight.foreground1": "#b22222",
+        "editorBracketHighlight.foreground2": "#ff6900",
+        "editorBracketHighlight.foreground3": "#ffd700",
+        "editorBracketHighlight.foreground4": "#32cd32",
+        "editorBracketHighlight.foreground5": "#00bfff",
+        "editorBracketHighlight.foreground6": "#9370db"
+    },
+    "workbench.colorTheme": "Monokai",
+    //!--------------------------------------------------
+    //! エディターの管理
+    //!--------------------------------------------------
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.empty.hint": "hidden",
+    "workbench.editor.tabSizing": "fixed",
+    "workbench.editor.tabSizingFixedMaxWidth": 120,
+    //!--------------------------------------------------
+    //! その他
+    //!--------------------------------------------------
+    //! サイド バー
+    "workbench.sideBar.location": "left",
+    //! 起動時のエディタ
+    "workbench.startupEditor": "none",
+    //!--------------------------------------------------
+    //! 設定エディター
+    //!--------------------------------------------------
+    "workbench.settings.applyToAllProfiles": [],
+    //!=========================================================================
+    //! ウィンドウ
+    //!=========================================================================
+    //! 起動
+    "window.restoreWindows": "none",
+    //!=========================================================================
+    //! チャット
+    //!=========================================================================
+    //!--------------------------------------------------
+    //! セッション
+    //!--------------------------------------------------
+    "chat.viewSessions.orientation": "stacked",
+    //!=========================================================================
+    //! 機能
+    //!=========================================================================
+    //!--------------------------------------------------
+    //! エクスプローラー
+    //!--------------------------------------------------
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    //!--------------------------------------------------
+    //! ソース管理
+    //!--------------------------------------------------
+    "git.ignoreMissingGitWarning": true,
+    //!--------------------------------------------------
+    //! ターミナル
+    //!--------------------------------------------------
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "terminal.integrated.fontSize": 12,
+    "terminal.integrated.profiles.windows": {
+        "Command Prompt": {
+            "path": "C:\\WINDOWS\\system32\\cmd.exe",
+            "args": [
+                "/k",
+                "set",
+                "LANG=ja_JP.SJIS"
+            ]
+        }
+    },
+    "terminal.integrated.setLocalVariables": false,
+    "terminal.integrated.showExitAlert": false,
+    //"terminal.external.windowsExec": "C:\\\\Windows\\\\System32\\\\wsl.exe",
+    //"terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\wsl.exe",
+    //"terminal.integrated.shellArgs.windows": "",
+    //"terminal.integrated.shell.linux": "wsl",
+    //"terminal.integrated.shellArgs.linux": ["~"],
+    //"terminal.integrated.automationShell.linux": "",
+    //"terminal.integrated.shell.osx": "/usr/bin/fish",
+    //"terminal.integrated.allowChords": false,
+    //!--------------------------------------------------
+    //! タスク
+    //!--------------------------------------------------
+    "task.problemMatchers.neverPrompt": {
+        "shell": true
+    },
+    //!=========================================================================
+    //! アプリケーション
+    //!=========================================================================
+    //!--------------------------------------------------
+    //! 更新
+    //!--------------------------------------------------
+    "update.showReleaseNotes": false,
+    //!--------------------------------------------------
+    //! 設定の同期
+    //!--------------------------------------------------
+    "settingsSync.ignoredExtensions": [],
+    //!=========================================================================
+    //! セキュリティ
+    //!=========================================================================
+    //!--------------------------------------------------
+    //! ワークスペース
+    //!--------------------------------------------------
+    "security.workspace.trust.untrustedFiles": "open",
+    //!--------------------------------------------------
+    //! その他
+    //!--------------------------------------------------
+    //!unc trusted hosts
+    "security.allowedUNCHosts": [
+    	"192.168.100.3",
+    	"192.168.100.100"
+    ],
+    //!=========================================================================
+    //! 拡張機能
+    //!=========================================================================
+    //!--------------------------------------------------
+    //! Arduino
+    //!--------------------------------------------------
+    "arduino.path": "C:\\Program Files (x86)\\Arduino",
+    //!--------------------------------------------------
+    //! C/C++
+    //!--------------------------------------------------
+    "C_Cpp.clang_format_style": "Visual Studio",
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "C_Cpp.updateChannel": "Insiders",
+    "C_Cpp.vcFormat.indent.namespaceContents": false,
+    "C_Cpp.vcFormat.indent.preserveComment": true,
+    //!--------------------------------------------------
+    //! clangd
+    //!--------------------------------------------------
+    "clangd.path": "C:\\msys64\\ucrt64\\bin\\clangd.exe",
+    "clangd.arguments": [
+        //"--compile-commands-dir=build",
+        //"--query-driver=C:\\bin\\mingw64\\bin\\gcc.exe"
+    ],
+    "clangd.fallbackFlags": [
+        //"-std=c11",
+        //"-isystem",
+        //"C:/bin/mingw64/include",
+        //"-isystem",
+        //"C:/bin/mingw64/x86_64-w64-mingw32/include"
+    ],
+    //! または、clangd固有のインレイヒントのみをオフにする
+    "clangd.inlayHints.toggle": false,
+    //!--------------------------------------------------
+    //! CMake
+    //!--------------------------------------------------
+    "cmake.configureOnOpen": true,
+    //!--------------------------------------------------
+    //! Code EOL
+    //!--------------------------------------------------
+    "code-eol.color": "#00FFFF",
+    //!--------------------------------------------------
+    //! GitLens
+    //!--------------------------------------------------
+    "gitlens.codeLens.dateFormat": "",
+    "gitlens.currentLine.enabled": false,
+    //!--------------------------------------------------
+    //! IntelliCode
+    //!--------------------------------------------------
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    //!--------------------------------------------------
+    //! LaTeX Workshop
+    //!--------------------------------------------------
+    "latex-workshop.chktex.enabled": true,
+    "latex-workshop.latex.autoBuild.run": "never", //保存時コンパイルの無効化
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "ptex2pdf",
+            "tools": [
+                "ptex2pdf"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "args": [
+                "-l",
+                "-ot",
+                "-kanji=utf8 -synctex=1",
+                "%DOC%"
+            ],
+            "command": "ptex2pdf",
+            "name": "ptex2pdf"
+        }
+    ],
+    "latex-workshop.message.update.show": false,
+    "latex-workshop.view.pdf.viewer": "tab",
+    //!--------------------------------------------------
+    //! Python
+    //!--------------------------------------------------
+    "python.formatting.provider": "yapf",
+    //!--------------------------------------------------
+    //! Remote - SSH
+    //!--------------------------------------------------
+    "remote.SSH.remotePlatform": {
+    	"192.168.100.10": "windows"	
+    },
+    //!--------------------------------------------------
+    //! SVN
+    //!--------------------------------------------------
+    //! SVNの差分・履歴出力をShift-JISとして扱う
+    "svn.default.encoding": "shift_jis",
+    //!--------------------------------------------------
+    //! Vim
+    //!--------------------------------------------------
+    "vim.cmdLineInitialColon": true,
+    "vim.easymotion": false,
+    //!検索結果のハイライト
+    "vim.hlsearch": true,
+    "vim.useSystemClipboard": true,
+    //!ctrlキーを使った操作が有効になる(vimのキーバインド>VSCodeのショートカット)
+    "vim.useCtrlKeys": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                ";"
+            ],
+            "after": [
+                ":"
+            ]
+        },
+        {
+            "before": [
+                ":"
+            ],
+            "after": [
+                ";"
+            ]
+        },
+        //! VSCodeのショートカットキーを優先。サイドバーの表示非表示切り替え
+        {
+            "before": [
+                "<C-b>"
+            ],
+            "commands": [
+                "workbench.action.toggleSidebarVisibility"
+            ]
+        }
+    ],
+    //!システムのクリップボードにコピー
+    "vim.useSystemClipboard": true
+}
