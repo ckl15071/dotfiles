@@ -2,26 +2,30 @@
 
 ## インストール
 
+### リモートから実行（初回セットアップ時など）
 ```bash
-# ローカルから実行
+curl -L raw.githubusercontent.com/ckl15071/dotfiles/master/install.sh | bash
+```
+
+### ローカルから実行
+```bash
 cd ~/dotfiles
 bash install.sh
-
-# リモートから実行（初回セットアップ時など）
-curl -L raw.githubusercontent.com/ckl15071/dotfiles/master/install.sh | bash
 ```
 
 ## VSCode の設定
 
 VSCode のユーザー設定を適用する。
 
+### リモートから実行（初回セットアップ時など）
 ```bash
-# ローカルから実行
+curl -L raw.githubusercontent.com/ckl15071/dotfiles/master/install_vscode.sh | bash
+```
+
+### ローカルから実行
+```bash
 cd ~/dotfiles
 bash install_vscode.sh
-
-# リモートから実行（初回セットアップ時など）
-curl -L raw.githubusercontent.com/ckl15071/dotfiles/master/install_vscode.sh | bash
 ```
 
 ## バックアップ
