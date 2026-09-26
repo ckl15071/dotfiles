@@ -16,7 +16,6 @@
     //!--------------------------------------------------
     //! 書式設定
     //!--------------------------------------------------
-    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
     "editor.formatOnSave": false,
     //!--------------------------------------------------
     //! ミニマップ
@@ -324,8 +323,34 @@
             "commands": [
                 "workbench.action.toggleSidebarVisibility"
             ]
+        },
+        //! clangd用
+        {
+            "before": [
+                "g",
+                "d"
+            ],
+            "commands": [
+                "editor.action.revealDefinition"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "D"
+            ],
+            "commands": [
+                "editor.action.revealDeclaration"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "r"
+            ],
+            "commands": [
+                "references-view.findReferences"
+            ]
         }
-    ],
-    //!システムのクリップボードにコピー
-    "vim.useSystemClipboard": true
+    ]
 }
