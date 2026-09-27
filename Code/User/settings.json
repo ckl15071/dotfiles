@@ -155,21 +155,12 @@
             "path": "C:\\WINDOWS\\system32\\cmd.exe",
             "args": [
                 "/k",
-                "set",
-                "LANG=ja_JP.SJIS"
+                "chcp 65001>nul"
             ]
         }
     },
     "terminal.integrated.setLocalVariables": false,
     "terminal.integrated.showExitAlert": false,
-    //"terminal.external.windowsExec": "C:\\\\Windows\\\\System32\\\\wsl.exe",
-    //"terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\wsl.exe",
-    //"terminal.integrated.shellArgs.windows": "",
-    //"terminal.integrated.shell.linux": "wsl",
-    //"terminal.integrated.shellArgs.linux": ["~"],
-    //"terminal.integrated.automationShell.linux": "",
-    //"terminal.integrated.shell.osx": "/usr/bin/fish",
-    //"terminal.integrated.allowChords": false,
     //!--------------------------------------------------
     //! タスク
     //!--------------------------------------------------
